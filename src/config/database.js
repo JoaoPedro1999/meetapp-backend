@@ -1,6 +1,6 @@
 module.exports = {
   dialect: 'postgres',
-  host: 'localhost',
+  host: process.env.DB_HOST,
   username: 'postgres',
   password: 'docker',
   database: 'meetapp',
