@@ -54,7 +54,17 @@ class MeetupController {
   async update(req, res) {
     const user_id = req.userId;
 
-    const meetup = await Meetup.findByPk(req.params.id);
+    const { id } = req.params;
+
+    const meetup = await Meetup.findByPk({
+      id,
+      include: [
+        {
+          model: File,
+          attributes: ['id', 'name', 'url', 'path'],
+        },
+      ],
+    });
 
     if (meetup.user_id !== user_id) {
       return res.status(401).json({ error: 'Not authorized.' });
