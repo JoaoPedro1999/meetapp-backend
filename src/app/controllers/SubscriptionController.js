@@ -21,10 +21,6 @@ class SubscriptionController {
           },
           required: true,
         },
-        {
-          model: User,
-          required: true,
-        },
       ],
       order: [[Meetup, 'date']],
     });
