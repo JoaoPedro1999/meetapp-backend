@@ -77,6 +77,14 @@ class SubscriptionController {
 
     return res.json(subscription);
   }
+
+  async delete(res, req) {
+    const subscription = await Subscription.findByPk(req.params.id);
+
+    await subscription.destroy();
+
+    return res.send();
+  }
 }
 
 export default new SubscriptionController();
