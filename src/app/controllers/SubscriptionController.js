@@ -79,7 +79,9 @@ class SubscriptionController {
   }
 
   async delete(res, req) {
-    const subscription = await Subscription.findByPk(req.params.id);
+    const { id } = req.params;
+
+    const subscription = await Subscription.findByPk(id);
 
     await subscription.destroy();
 
